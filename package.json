@@ -11,7 +11,7 @@
     "prefix": "./node_modules/.bin/postcss css/styles.css --use autoprefixer -o css/styles.css",
     "build": "./node_modules/.bin/npm-run-all compile:scss prefix compress:css",
     "copy:dist": "cp index.html dist; cp -r css/ dist/",
-    "gh-deploy": "./node_modules/.bin/.gh-pages -d dist",
+    "gh-deploy": "./node_modules/.bin/gh-pages -d dist",
     "deploy": "./node_modules/.bin/npm-run-all build copy:dist gh-deploy",
     "dev-server": "live-server",
     "start": "./node_modules/.bin/npm-run-all --parallel watch:scss dev-server"
