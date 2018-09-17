@@ -1,0 +1,45 @@
+
+
+%field {
+  border: none;
+  padding: 1.2rem;
+  font-size: 1.8rem;
+  line-height: 1.8;
+}
+
+.form {
+  position: relative;
+
+  &__label {
+    position: absolute;
+    opacity: 0;
+  }
+
+  &__input-group {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  &__text-input {
+    @extend %field;
+    font-family: 'Lato', sans-serif;
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+    width: 30rem;
+    font-weight: 200;
+    letter-spacing: .2rem;
+    color: $color-grey-darkest;
+    background-color: $color-grey-lightest;
+  }
+
+  &__submit-input {
+    @extend %field;
+    font-family: 'Marcellus SC', serif;
+    background-color: $logo-color-tertiary;
+    color: $color-grey-darkest;
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    cursor: pointer;
+  }
+}

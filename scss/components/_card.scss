@@ -1,0 +1,95 @@
+
+.card {
+  flex: 1 0 auto;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  @media (min-width: $bp-features-small) {
+    width: 80%;
+    margin: 3rem auto;
+  }
+
+  @media (min-width: $bp-features) {
+    flex: 0 0 auto;
+    width: 30%;
+    height: 44rem;
+    margin-bottom: 0;
+  }
+
+  position: relative;
+  background-repeat: no-repeat;
+  border: none;
+  border-top: .5rem solid;
+  border-bottom: .5rem solid;
+  background-color: $color-grey-lightest;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, .2) 0%, transparent 20rem);
+  background-position: top 0 center;
+  transition: all .3s ease-in-out;
+
+  @include card-modifier(
+    $selector: '.card--apprentice',
+    $border-color: $logo-color-tertiary,
+    $header-bg-img: 'https://source.unsplash.com/J2VmF-6tcfA/400x400',
+    $clip-path: '#card-left');
+  @include card-modifier(
+    $selector: '.card--virtuoso',
+    $border-color: $logo-color-secondary,
+    $header-bg-img: 'https://source.unsplash.com/unmtTVzBBWo/400x400',
+    $clip-path: '#card-middle');
+  @include card-modifier(
+    $selector: '.card--master',
+    $border-color: $logo-color-primary-light,
+    $header-bg-img: 'https://source.unsplash.com/MlhJNEUQpBs/400x400',
+    $clip-path: '#card-right');
+
+  &:hover,
+  &:active {
+    background-position: top -15rem center;
+
+    .card__header {
+      filter: saturate(1.5) contrast(1.5);
+    }
+  }
+
+  &__header {
+    height: 15rem;
+    background-position: center;
+    background-size: cover;
+    filter: saturate(0) contrast(1.5) brightness(.8);
+    transition: all .3s ease-in-out;
+  }
+
+
+  &__title {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 3rem;
+    text-align: center;
+    color: $color-grey-lightest;
+    text-shadow: 0 0 5px rgba(0, 0, 0, .7);
+    background-color: rgba(0, 0, 0, .35);
+    border-bottom: 1px solid $color-grey-darkest;
+  }
+
+  &__body {
+    padding: 1.5rem 3rem;
+  }
+
+  &__heading {
+    font-size: 2rem;
+    font-family:  'Marcellus SC', serif;
+    color: $color-grey-darkest;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    font-weight: 400;
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  &__description {
+    color: $color-grey-darkest;
+    font-size: 1.6rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+  }
+}

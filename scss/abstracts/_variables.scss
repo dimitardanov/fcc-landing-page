@@ -1,0 +1,34 @@
+
+
+
+// Color scheme from: https://color.adobe.com/Color-Theme-58-color-theme-11119547/?showPublished=true
+$color-grey-darkest:      #0d0d0d;
+$color-grey-dark:         #404040;
+$color-grey-light:        #737373;
+$color-grey-lighter:      #a6a6a6;
+$color-grey-lightest:     #f2f2f2;
+
+
+
+$logo-color-primary:        #DAA520;
+$logo-color-primary-light:  #FFBA0C;
+$logo-color-primary-dark:   darken($logo-color-primary, 30%);
+$logo-color-secondary:      #8802A7;
+$logo-color-tertiary:       #37E0A6;
+
+
+$bp-large: 50em;
+$bp-small: 37.5em;
+$bp-smaller: .7 * $bp-small;
+
+$bp-signup-smaller: $bp-smaller;
+$bp-signup-small: $bp-small;
+
+
+$bp-features: $bp-small;
+$bp-features-small: $bp-smaller;
+
+$bp-header: $bp-small;
+$bp-header-small: $bp-features-small;
+
+$bp-testimonials: $bp-small;

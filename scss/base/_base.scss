@@ -1,0 +1,27 @@
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;    // 1rem = 10px
+
+  @media (max-width: $bp-large) {    // 800px
+    font-size: 50%;    // 1rem = 8px
+  }
+}
+
+body {
+  line-height: 1.4;
+  background-color: $color-grey-darkest;
+  color: $color-grey-lightest;
+}
+
+svg {
+  position: absolute;
+}

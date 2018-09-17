@@ -1,0 +1,128 @@
+
+
+%container {
+  max-width: 114rem;
+  margin: 0 auto;
+  display: flex;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  &__container {
+    @extend %container;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (min-width: $bp-header) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}
+
+.signup {
+  &__container {
+    @extend %container;
+
+    --margin-top: 18rem;
+
+    @media (min-width: $bp-signup-smaller) {
+      --margin-top: 11rem;
+    }
+
+    @media (min-width: $bp-signup-small) {
+      --margin-top: 6rem;
+    }
+
+    margin-top: var(--margin-top);
+    min-height: calc(100vh - var(--margin-top));
+
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
+
+.embed-container {
+  @include responsive-youtube-embed(1);
+
+  @media (min-width: $bp-large) {
+    @include responsive-youtube-embed(.6);
+  }
+}
+
+
+.features {
+  background-color: $color-grey-lightest;
+  background-color: $color-grey-darkest;
+  border-top: 1px solid $logo-color-secondary;
+  min-height: calc(100vh - 67px);
+
+  &__container {
+    @extend %container;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    @media (min-width: $bp-features) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}
+
+
+.testimonials {
+  min-height: calc(100vh - 16.6rem);
+
+  &__container {
+    @extend %container;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.testimonial {
+  flex: 0 1 80%;
+
+  @media (min-width: $bp-testimonials) {
+    flex: 0 1 60%;
+  }
+
+  padding-bottom: 6rem;
+  display: grid;
+  grid-column-gap: 2rem;
+  grid-template-areas:
+    'img quote'
+    'img cite';
+
+  &__quote {
+    padding-left: 4.5rem;
+    grid-area: quote;
+  }
+
+  &__author {
+    text-align: right;
+    grid-area: cite;
+  }
+
+  &__author-image {
+    width: 100px;
+    height: 100px;
+    display: block;
+    grid-area: img;
+  }
+}
+
+.footer {
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

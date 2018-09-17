@@ -1,0 +1,104 @@
+
+@mixin gradient-background($bg-color) {
+  background-color: $bg-color;
+  background-image:
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0) 55%,
+      rgba(0, 0, 0, .5) 65%,
+      rgba(0, 0, 0, 0) 100%);
+}
+
+
+@mixin gradient-text($base-color) {
+  color: $base-color;
+  @supports (-webkit-background-clip: text) or (background-clip: text) {
+    @include gradient-background($base-color);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+
+@mixin responsive-youtube-embed($scale) {
+  position: relative;
+  padding-bottom: 56.25% * $scale;
+  height: 0;
+  overflow: hidden;
+  width: 100% * $scale;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+@mixin g-clef($width, $font-size, $line-color, $g-clef-color, $bg-color, $top-offset: 0, $left-offset: 0) {
+  position: relative;
+  $line-height: $font-size / 6;
+  $stroke-thickness: .1rem;
+  $height: ($line-height + $stroke-thickness) * 4;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: $line-height * 2 + $top-offset;
+    left: $left-offset;
+    width: $width;
+    height: $height;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      $line-color,
+      $line-color $stroke-thickness,
+      transparent $stroke-thickness,
+      transparent $line-height
+    );
+    -webkit-mask-image: linear-gradient(to left, transparent 0, #fff 1.4rem);
+    mask-image: linear-gradient(to left, transparent 0, #fff 1.4rem);
+  }
+
+  &::after {
+    content: '\1d11e';  // g-clef symbol
+    position: absolute;
+    z-index: 2;
+    top: $top-offset;
+    left: $left-offset;
+    width: $width;
+    font-size: $font-size;
+    color: $bg-color;
+    text-shadow: 0 0 1rem $g-clef-color;
+    @supports not ((-webkit-mask-image: linear-gradient(to left, transparent 0, #fff 1.4rem)) or (mask-image: linear-gradient(to left, transparent 0, #fff 1.4rem))) {
+      background-image: linear-gradient(
+        to left,
+        $bg-color 0,
+        transparent 1.4rem,
+      );
+    }
+  }
+}
+
+
+@mixin card-modifier($selector, $border-color, $header-bg-img, $clip-path) {
+  &:hover,
+  &:active {
+    &#{$selector} {
+      border-top-color: $border-color;
+      border-bottom-color: $border-color;
+    }
+  }
+
+  &#{$selector} {
+    border-top-color: desaturate($border-color, 100%);
+    border-bottom-color: desaturate($border-color, 100%);
+  }
+
+  &#{$selector} &__header {
+    background-image: url($header-bg-img);
+    clip-path: url($clip-path);
+  }
+}
